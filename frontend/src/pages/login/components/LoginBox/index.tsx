@@ -1,23 +1,25 @@
 import { Card, Form, Input, Button } from 'antd';
-
-interface LoginParams {
-	username: string;
-	password: string;
-}
+import type { AccountUserTokenParams } from '@/api/user/types';
+import { fetchAccountUserToken } from '@/api/user';
 
 function LoginBox() {
-	const [formData] = useState<LoginParams>({
+	const [formData] = useState<AccountUserTokenParams>({
 		username: 'admin',
 		password: '123456',
 	});
 
-	function handleFinish(value: LoginParams) {
-		console.log(value);
+	async function handleFinish(value: AccountUserTokenParams) {
+		try {
+			await fetchAccountUserToken(value);
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	return (
 		<div className='flex justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
 			<Card style={{ width: 300 }}>
+				<div className='mb-6 text-center text-2xl font-bold'>登录</div>
 				<Form
 					labelCol={{ span: 6 }}
 					initialValues={formData}
