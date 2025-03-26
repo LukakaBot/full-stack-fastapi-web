@@ -4,6 +4,9 @@ import './index.css';
 import App from './App.tsx';
 import '@ant-design/v5-patch-for-react-19';
 import { BrowserRouter } from 'react-router';
+import { setupBucket } from './plugin';
+
+setupBucket();
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
