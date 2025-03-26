@@ -5,7 +5,6 @@ from app.model.login import AccountUserTokenParams, AccountUserTokenResponse, Us
 
 router = APIRouter(tags=["login"])
 
-
 fake = Faker()
 
 
@@ -29,6 +28,7 @@ def get_user_info(token: str):
             "userId": fake.random_int(min=100000, max=999999),
             "userName": fake.name(),
             "avatar": fake.image_url(),
+            "phone": fake.phone_number(),
             "roles": ["admin"],
             "roleName": "admin",
             "menus": [],
