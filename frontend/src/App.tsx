@@ -1,20 +1,12 @@
-import { Suspense, lazy } from 'react';
-import { Routes, Route } from 'react-router';
+import { Suspense } from 'react';
 import './App.css';
-
-const LoginPage = lazy(() => import('./pages/login/index'));
-const AppLayout = lazy(() => import('@/layout/AppLayout'));
-const HomePage = lazy(() => import('./pages/home/index'));
+import { staticRoutes } from '@/router/routes';
+import AuthRoute from '@/components/AuthRoute';
 
 function App() {
 	return (
 		<Suspense>
-			<Routes>
-				<Route path='/login' element={<LoginPage />} />
-				<Route element={<AppLayout />}>
-					<Route path='/' element={<HomePage />} />
-				</Route>
-			</Routes>
+			<AuthRoute routes={staticRoutes} />
 		</Suspense>
 	);
 }
