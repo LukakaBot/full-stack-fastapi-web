@@ -1,5 +1,5 @@
-import type { ImportGlobPageModules } from "@/modules";
-import { routerModules, layoutModules } from "@/modules";
+import type { ImportGlobPageModules } from "@/module";
+import { routerModules, layoutModules } from "@/module";
 
 export function lazyImport(modules: ImportGlobPageModules, path: string) {
   const module = modules[path];
